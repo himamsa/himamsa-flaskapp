@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    {% if user %}
+        <h2>Welcome, {{ user[3] }} {{ user[4] }}</h2> <!-- First Name and Last Name -->
+
+        <p><strong>Username:</strong> {{ user[1] }}</p>
+        <p><strong>First Name:</strong> {{ user[3] }}</p>
+        <p><strong>Last Name:</strong> {{ user[4] }}</p>
+        <p><strong>Email:</strong> {{ user[5] }}</p>
+	<p><strong>Word Count in Uploaded File:</strong> {{ user[7] }}</p>
+        <p><a href="{{ url_for('download_file', filename=user[6]) }}">Download File</a></p>
+    {% else %}
+        <h2>User not found</h2>
+    {% endif %}
+
+    <form action="{{ url_for('logout') }}" method="get">
+            <button type="submit">Logout</button>
+        </form>
+
+</body>
+</html>
+
